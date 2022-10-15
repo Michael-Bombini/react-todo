@@ -1,8 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-const AddTodo = () => {
+const AddTodo = (props) => {
+const [textTodo , setTextTodo] = useState('');
+
+const inputHandler = (e) =>{
+  setTextTodo(e.target.value);
+};
+
+const sendTodo = () => {
+  props.onAddTodo(textTodo);
+}
+
+
   return (
-    <div>AddTodo</div>
+    <div>
+      <input type="text" onChange={inputHandler} value={textTodo}/>
+      <button type='submit' onClick={sendTodo}>add to do</button>
+    </div>
   )
 }
 
