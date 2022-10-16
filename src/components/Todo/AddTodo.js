@@ -1,23 +1,27 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 
 const AddTodo = (props) => {
-const [textTodo , setTextTodo] = useState('');
+  const [textTodo, setTextTodo] = useState("");
+  const inputHandler = (e) => {
+    setTextTodo(e.target.value);
+  };
 
-const inputHandler = (e) =>{
-  setTextTodo(e.target.value);
-};
-
-const sendTodo = () => {
-  props.onAddTodo(textTodo);
-}
-
+  const sendTodo = () => {
+    props.onAddTodo({
+      text: textTodo,
+      done: false,
+    });
+    setTextTodo("");
+  };
 
   return (
     <div>
-      <input type="text" onChange={inputHandler} value={textTodo}/>
-      <button type='submit' onClick={sendTodo}>add to do</button>
+      <input type="text" onChange={inputHandler} value={textTodo} />
+      <button type="submit" onClick={sendTodo}>
+        add to do
+      </button>
     </div>
-  )
-}
+  );
+};
 
-export default AddTodo
+export default AddTodo;
