@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import AddTodo from "../Todo/AddTodo";
 import TodoElement from "../Todo/TodoElement";
-import "./Card.css";
+import "./TodoList.css";
 
-const Card = () => {
+const TodoList = () => {
   const [todo, setTodo] = useState([]);
 
   const addTodo = (newTodo) => {
@@ -17,14 +17,22 @@ const Card = () => {
   
   const markAsDone = (ind) => {
     const newTodos = [...todo];
-    newTodos[ind].done = true;
+    newTodos[ind].done = !newTodos[ind].done;
     setTodo(newTodos);
   };
+
+  const editTodo = ind => {
+    const newTodos = [...todo];
+    newTodos[ind].text = 'a';
+    setTodo(newTodos);
+  }
 
   const deleteTodo = (ind) => {
     const newTodos = [...todo].filter((elem, index) => index !== ind);
     setTodo(newTodos);
   };
+
+  
 
   return (
     <div className="todo__card">
@@ -36,10 +44,11 @@ const Card = () => {
           index={index}
           onDeleteTodo={deleteTodo}
           onMarkAsDone={markAsDone}
+          onEditTodo={editTodo}
         />
       ))}
     </div>
   );
 };
 
-export default Card;
+export default TodoList;

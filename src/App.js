@@ -1,9 +1,9 @@
-import Card from "./components/UI/Card";
+import TodoList from "./components/UI/TodoList";
 import './App.css';
 function App() {
   return (
     <div className="App">
-      <Card/>
+      <TodoList/>
     </div>
   );
 }
